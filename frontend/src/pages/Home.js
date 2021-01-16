@@ -1,12 +1,14 @@
 import React from "react"
 import { HStack, VStack } from "@chakra-ui/react"
 
-import Menu from "../components/Menu"
-import Graph from "../components/Graph"
-import Logs from "../components/Logs"
-import Data from "../components/Data"
-import Banner from "../components/Banner"
-import Footer from "../components/Footer"
+import Menu from "../components/dashboard/Menu"
+import Graph from "../components/dashboard/Graph"
+import Logs from "../components/dashboard/Logs"
+import LogsT from "../components/dashboard/Logs_two"
+import Data from "../components/dashboard/Data"
+import DataT from "../components/dashboard/Data_two"
+import Banner from "../components/dashboard/Banner"
+import Footer from "../components/dashboard/Footer"
 
 export default function Home() {
 
@@ -18,7 +20,7 @@ export default function Home() {
         <HStack w="100%" spacing={3} align="end">
           <VStack w="50%" spacing={3}>
             <Data />
-            <Data />
+            <DataT />
           </VStack>
 
           <Graph />
@@ -28,7 +30,7 @@ export default function Home() {
 
         <HStack w="100%" spacing={3} align="end">
           <Logs />
-          <Logs />
+          <LogsT />
         </HStack>
 
         <Footer />
