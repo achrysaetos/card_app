@@ -1,6 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
+// import { useQuery } from "@apollo/react-hooks"
 import { HStack, VStack } from "@chakra-ui/react"
 
+import { AuthContext } from "../context/auth"
+// import { FETCH_POSTS_QUERY } from "../graphql/FETCH_POSTS_QUERY"
 import Menu from "../components/dashboard/Menu"
 import Graph from "../components/dashboard/Graph"
 import Logs from "../components/dashboard/Logs"
@@ -11,8 +14,10 @@ import Banner from "../components/dashboard/Banner"
 import Footer from "../components/dashboard/Footer"
 
 export default function Home() {
+  const { user } = useContext(AuthContext)
+  // const { loading, data } = useQuery(FETCH_POSTS_QUERY)
 
-  return (
+  const landing = user ? (
     <HStack spacing={3} align="end">
       <Menu />
 
@@ -36,7 +41,10 @@ export default function Home() {
         <Footer />
       </VStack>
     </HStack>
-    
+  ) : (
+    ""
   )
+
+  return landing
   
 }
