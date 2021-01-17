@@ -4,6 +4,7 @@ import { Box, Heading, Flex, Text, Button, IconButton } from "@chakra-ui/react"
 import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider } from "@chakra-ui/react"
 import { AddIcon, BellIcon, ViewIcon, ChevronDownIcon } from "@chakra-ui/icons"
 
+import AddCard from "./AddCard"
 import { AuthContext } from "../context/auth"
 
 export default function MenuBar() {
@@ -25,7 +26,7 @@ export default function MenuBar() {
       </Flex>
 
       <Flex align="center">
-        <IconButton variant="outline" colorScheme="teal" icon={<AddIcon />} size="lg" mr={6} />
+        <AddCard />
         <IconButton variant="outline" colorScheme="teal" icon={<BellIcon />} size="lg" mr={6} />
         <IconButton variant="outline" colorScheme="teal" icon={<ViewIcon />} size="lg" mr={6} />
 
