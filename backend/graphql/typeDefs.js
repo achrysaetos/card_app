@@ -6,26 +6,14 @@ type Query -- list of available commands that allows clients to fetch the object
 type Mutation -- list of available commands that allows clients to modify data
 */
 module.exports = gql`
-  type Post {
+  type Card {
     id: ID!
-    body: String!
+    cardNumber: String!
+    cvvNumber: String!
+    expirationMonth: String!
+    expirationYear: String!
+    balanceRemaining: String!
     createdAt: String!
-    username: String!
-    comments: [Comment]!
-    likes: [Like]!
-    likeCount: Int!
-    commentCount: Int!
-  }
-  type Comment {
-    id: ID!
-    createdAt: String!
-    username: String!
-    body: String!
-  }
-  type Like {
-    id: ID!
-    createdAt: String!
-    username: String!
   }
   type User {
     id: ID!
@@ -42,16 +30,13 @@ module.exports = gql`
   }
   
   type Query {
-    getPosts: [Post]
-    getPost(postId: ID!): Post
+    getCards: [Card]
+    getCard(cardId: ID!): Card
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
     login(username: String!, password: String!): User!
-    createPost(body: String!): Post!
-    deletePost(postId: ID!): String!
-    createComment(postId: String!, body: String!): Post!
-    deleteComment(postId: ID!, commentId: ID!): Post!
-    likePost(postId: ID!): Post!
+    createCard(cardNumber: String!, cvvNumber: String!, expirationMonth: String!, expirationYear: String!, balanceRemaining: String!): Card!
+    deleteCard(cardId: ID!): String!
   }
 `
