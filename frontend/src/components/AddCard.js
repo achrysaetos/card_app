@@ -1,33 +1,43 @@
 import React, { useContext } from "react"
 import { useMutation } from "@apollo/react-hooks"
-import { Box, Flex, Text, Divider, Button, FormControl, useDisclosure, Textarea, IconButton, Heading, Input } from "@chakra-ui/react"
+import { Flex, Text, Button, FormControl, useDisclosure, IconButton, Input } from "@chakra-ui/react"
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 
 import { AuthContext } from "../context/auth"
 import { useForm } from "../util/hooks"
-import { FETCH_POSTS_QUERY } from "../graphql/FETCH_POSTS_QUERY"
-import { CREATE_POST_MUTATION } from "../graphql/CREATE_POST_MUTATION"
+import { FETCH_CARDS_QUERY } from "../graphql/FETCH_CARDS_QUERY"
+import { CREATE_CARD_MUTATION } from "../graphql/CREATE_CARD_MUTATION"
 
 export default function AddCard() {
     const { user } = useContext(AuthContext)
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { values, onChange, onSubmit } = useForm(createPostCallback, { body: "" })
+    const { values, onChange, onSubmit } = useForm(createCardCallback, { 
+      cardNumber: "",
+      cvvNumber: "",
+      expirationMonth: "",
+      expirationYear: "",
+      balanceRemaining: ""
+    })
 
-    const [createPost] = useMutation(CREATE_POST_MUTATION, {
+    const [createCard] = useMutation(CREATE_CARD_MUTATION, {
       variables: values,
       update(proxy, result) {
-        const data = proxy.readQuery({ query: FETCH_POSTS_QUERY })
+        const data = proxy.readQuery({ query: FETCH_CARDS_QUERY })
         proxy.writeQuery({
-          query: FETCH_POSTS_QUERY,
-          data: { getPosts: [result.data.createPost, ...data.getPosts] }
+          query: FETCH_CARDS_QUERY,
+          data: { getCards: [result.data.createCard, ...data.getCards] }
         })
-        values.body = ""
+        values.cardNumber = ""
+        values.cvvNumber = ""
+        values.expirationMonth = ""
+        values.expirationYear = ""
+        values.balanceRemaining = ""
       }
     })
   
-    function createPostCallback() { // to call createPost() in useForm()
-      createPost()
+    function createCardCallback() { // to call createCard() in useForm()
+      createCard()
     }
 
   return (
@@ -44,60 +54,96 @@ export default function AddCard() {
           <ModalBody>
             { user ? 
               <>
-                  <Flex alignItems="flex-end" justify="space-between">
-                    <form onSubmit={onSubmit} noValidate>
-                      <FormControl>
+                <Flex alignItems="flex-end" justify="space-between">
+                  <form onSubmit={onSubmit} noValidate>
+                    <FormControl>
+                      <Flex alignItems="center">
+                        <Text fontSize="lg" mr={6} fontWeight="semibold">Card Number:</Text>
                         <Input 
+                          textAlign="center"
+                          w="200px"
                           size="lg" 
                           variant="flushed"
                           focusBorderColor="grey"
                           autoComplete="off"
-                          placeholder="Card Number (####-####-####-####)"
-                          name="body"
+                          placeholder="####-####-####-####"
+                          name="cardNumber"
                           type="text"
-                          value={values.body}
+                          value={values.cardNumber}
                           onChange={onChange}
                         />
+                      </Flex>
+
+                      <Flex alignItems="center">
+                        <Text fontSize="lg" mr={6} fontWeight="semibold">Expiration Date:</Text>
                         <Input 
+                          textAlign="center"
+                          w="25px"
                           size="lg" 
                           variant="flushed"
                           focusBorderColor="grey"
                           autoComplete="off"
-                          placeholder="CVV (###)"
-                          name="body"
+                          placeholder="##"
+                          name="expirationMonth"
                           type="text"
-                          value={values.body}
+                          value={values.expirationMonth}
                           onChange={onChange}
                         />
+                        <Text fontSize="lg" px={2}>/</Text>
                         <Input 
+                          textAlign="center"
+                          w="25px"
                           size="lg" 
                           variant="flushed"
                           focusBorderColor="grey"
                           autoComplete="off"
-                          placeholder="Expiration Date (##/##)"
-                          name="body"
+                          placeholder="##"
+                          name="expirationYear"
                           type="text"
-                          value={values.body}
+                          value={values.expirationYear}
                           onChange={onChange}
                         />
+
+                        <Text fontSize="lg" mr={6} fontWeight="semibold" ml={6}>CVV:</Text>
                         <Input 
+                          textAlign="center"
+                          w="40px"
                           size="lg" 
                           variant="flushed"
                           focusBorderColor="grey"
                           autoComplete="off"
-                          placeholder="Balance Remaining"
-                          name="body"
+                          placeholder="###"
+                          name="cvvNumber"
                           type="text"
-                          value={values.body}
+                          value={values.cvvNumber}
                           onChange={onChange}
                         />
-                      </FormControl>
+                      </Flex>
                       
-                      <Button colorScheme="teal" variant="outline" width="full" mt={6} size="lg" type="submit" disabled={values.body.trim() === ""} onClick={onClose}>
-                        Add
-                      </Button>
-                    </form>
-                  </Flex>
+                      <Flex alignItems="center">
+                        <Text fontSize="lg" mr={6} fontWeight="semibold">Balance Remaining:</Text>
+                        <Text fontSize="lg" pr={2} color="gray.500">$</Text>
+                        <Input 
+                          textAlign="center"
+                          w="60px"
+                          size="lg" 
+                          variant="flushed"
+                          focusBorderColor="grey"
+                          autoComplete="off"
+                          placeholder="## . ##"
+                          name="balanceRemaining"
+                          type="text"
+                          value={values.balanceRemaining}
+                          onChange={onChange}
+                        />
+                      </Flex>
+                    </FormControl>
+                    
+                    <Button colorScheme="teal" variant="outline" width="full" mt={6} size="lg" type="submit" onClick={onClose}>
+                      Add
+                    </Button>
+                  </form>
+                </Flex>
               </> 
             : "" }
           </ModalBody>
