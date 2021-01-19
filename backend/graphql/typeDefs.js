@@ -21,6 +21,7 @@ module.exports = gql`
     token: String!
     username: String!
     createdAt: String!
+    cards: [Card]!
   }
   input RegisterInput {
     username: String!
@@ -30,13 +31,13 @@ module.exports = gql`
   }
   
   type Query {
-    getCards: [Card]
-    getCard(cardId: ID!): Card
+    getUsers: [User]
+    getUser(userId: ID!): User
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
     login(username: String!, password: String!): User!
-    createCard(cardNumber: String!, cvvNumber: String!, expirationMonth: String!, expirationYear: String!, balanceRemaining: String!): Card!
-    deleteCard(cardId: ID!): String!
+    createCard(userId: ID!, cardNumber: String!, cvvNumber: String!, expirationMonth: String!, expirationYear: String!, balanceRemaining: String!): User!
+    deleteCard(userId: ID!, cardId: ID!): User!
   }
 `
