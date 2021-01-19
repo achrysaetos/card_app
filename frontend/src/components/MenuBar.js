@@ -1,10 +1,12 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { Box, Heading, Flex, Text, Button, IconButton } from "@chakra-ui/react"
+import { Box, Heading, Flex, Text, Button } from "@chakra-ui/react"
 import { Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider } from "@chakra-ui/react"
-import { AddIcon, BellIcon, ViewIcon, ChevronDownIcon } from "@chakra-ui/icons"
+import { ChevronDownIcon } from "@chakra-ui/icons"
 
 import AddCard from "./AddCard"
+import Messages from "./Messages"
+import Profile from "./Profile"
 import { AuthContext } from "../context/auth"
 
 export default function MenuBar() {
@@ -27,8 +29,8 @@ export default function MenuBar() {
 
       <Flex align="center">
         <AddCard />
-        <IconButton variant="outline" colorScheme="teal" icon={<BellIcon />} size="lg" mr={6} />
-        <IconButton variant="outline" colorScheme="teal" icon={<ViewIcon />} size="lg" mr={6} />
+        <Messages />
+        <Profile />
 
         <Menu>
           <MenuButton as={Button} colorScheme="teal" rightIcon={<ChevronDownIcon />} size="lg" mr={6}>
