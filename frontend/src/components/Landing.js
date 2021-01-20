@@ -9,7 +9,6 @@ import Graph from "../components/dashboard/Graph"
 import Logs from "../components/dashboard/Logs"
 import LogsT from "../components/dashboard/Logs_two"
 import Data from "../components/dashboard/Data"
-import DataT from "../components/dashboard/Data_two"
 import Banner from "../components/dashboard/Banner"
 import Footer from "../components/dashboard/Footer"
 
@@ -26,14 +25,13 @@ export default function Home() {
         <VStack spacing={3} w="100%">
           <HStack w="100%" spacing={3} align="end">
             <VStack w="50%" spacing={3}>
-              <Data />
-              <DataT />
+              <Data cards={data.getUser.cards} />
             </VStack>
 
             <Graph />
           </HStack>
           
-          <Banner />
+          <Banner cards={data.getUser.cards} />
 
           <HStack w="100%" spacing={3} align="end">
             <Logs />
