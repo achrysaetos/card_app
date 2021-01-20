@@ -8,6 +8,15 @@ export const LOGIN_USER = gql`
       username
       createdAt
       token
+      cards {
+        id
+        cardNumber
+        cvvNumber
+        expirationMonth
+        expirationYear
+        balanceRemaining
+        createdAt
+      }
     }
   }
 `;

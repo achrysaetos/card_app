@@ -1,7 +1,8 @@
 import gql from "graphql-tag";
 
 export const CREATE_CARD_MUTATION = gql`
-  mutation createCard(
+  mutation(
+    $userId: String!
     $cardNumber: String!
     $cvvNumber: String!
     $expirationMonth: String!
@@ -9,6 +10,7 @@ export const CREATE_CARD_MUTATION = gql`
     $balanceRemaining: String!
   ) {
     createCard(
+      userId: $userId
       cardNumber: $cardNumber
       cvvNumber: $cvvNumber
       expirationMonth: $expirationMonth
@@ -16,12 +18,15 @@ export const CREATE_CARD_MUTATION = gql`
       balanceRemaining: $balanceRemaining
   ) {
       id
-      cardNumber
-      cvvNumber
-      expirationMonth
-      expirationYear
-      balanceRemaining
-      createdAt
+      cards {
+        id
+        cardNumber
+        cvvNumber
+        expirationMonth
+        expirationYear
+        balanceRemaining
+        createdAt
+      }
     }
   }
 `;

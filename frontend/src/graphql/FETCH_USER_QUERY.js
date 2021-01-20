@@ -1,9 +1,12 @@
 import gql from "graphql-tag";
 
-export const DELETE_CARD_MUTATION = gql`
-  mutation deleteCard($userId: ID!, $cardId: ID!) {
-    deleteCard(userId: $userId, cardId: $cardId){
+export const FETCH_USER_QUERY = gql`
+  query ($userId: ID!) {
+    getUser(userId: $userId) {
       id
+      email
+      username
+      createdAt
       cards {
         id
         cardNumber
