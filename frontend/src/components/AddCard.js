@@ -6,13 +6,13 @@ import { AddIcon } from "@chakra-ui/icons"
 
 import { AuthContext } from "../context/auth"
 import { useForm } from "../util/hooks"
-import { FETCH_CARDS_QUERY } from "../graphql/FETCH_CARDS_QUERY"
 import { CREATE_CARD_MUTATION } from "../graphql/CREATE_CARD_MUTATION"
 
 export default function AddCard() {
     const { user } = useContext(AuthContext)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { values, onChange, onSubmit } = useForm(createCardCallback, { 
+      userId: user.id,
       cardNumber: "",
       cvvNumber: "",
       expirationMonth: "",
@@ -22,12 +22,7 @@ export default function AddCard() {
 
     const [createCard] = useMutation(CREATE_CARD_MUTATION, {
       variables: values,
-      update(proxy, result) {
-        const data = proxy.readQuery({ query: FETCH_CARDS_QUERY })
-        proxy.writeQuery({
-          query: FETCH_CARDS_QUERY,
-          data: { getCards: [result.data.createCard, ...data.getCards] }
-        })
+      update() {
         values.cardNumber = ""
         values.cvvNumber = ""
         values.expirationMonth = ""

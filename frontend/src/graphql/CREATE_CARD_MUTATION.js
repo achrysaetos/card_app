@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const CREATE_CARD_MUTATION = gql`
   mutation(
-    $userId: String!
+    $userId: ID!
     $cardNumber: String!
     $cvvNumber: String!
     $expirationMonth: String!
