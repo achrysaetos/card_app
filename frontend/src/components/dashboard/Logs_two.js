@@ -24,7 +24,7 @@ export default function Logs({ cards }) {
           {cards.map((card) => (
             <Tr key={card.id}>
               <Td>************{card.cardNumber.substring(12,16)}</Td>
-              <Td>${card.balanceRemaining}</Td>
+              <Td>${parseFloat(card.balanceRemaining).toFixed(2)}</Td>
               <Td>{moment(card.createdAt).format("l")}</Td>
             </Tr>
           ))}

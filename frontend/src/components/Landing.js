@@ -28,7 +28,7 @@ export default function Home() {
               <Data cards={data.getUser.cards} />
             </VStack>
 
-            <Graph />
+            <Graph cards={data.getUser.cards}/>
           </HStack>
           
           <Banner cards={data.getUser.cards} />

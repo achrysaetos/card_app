@@ -4,7 +4,7 @@ import { Flex, Text, VStack } from "@chakra-ui/react"
 export default function Data({ cards }) {
   const valueAdded = cards.reduce((a, {balanceRemaining}) => a + parseFloat(balanceRemaining), 0).toFixed(2)
   const interestEarned = (valueAdded * .08).toFixed(2)
-  const yourBalance = parseFloat(valueAdded) + parseFloat(interestEarned)
+  const yourBalance = (parseFloat(valueAdded) + parseFloat(interestEarned)).toFixed(2)
 
   return(
     <VStack w="100%" spacing={3}>
