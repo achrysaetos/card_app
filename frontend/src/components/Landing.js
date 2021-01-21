@@ -34,7 +34,7 @@ export default function Home() {
           <Banner cards={data.getUser.cards} />
 
           <HStack w="100%" spacing={3} align="end">
-            <Logs />
+            <Logs cards={data.getUser.cards} />
             <LogsT cards={data.getUser.cards} />
           </HStack>
 

@@ -1,6 +1,6 @@
 import React from "react"
 import { Flex, Text } from "@chakra-ui/react"
-import { ComposedChart, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Area, Bar, Line } from "recharts"
+import { ComposedChart, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Area, Bar, Line, ResponsiveContainer } from "recharts"
 import moment from "moment"
 
 export default function Graph({ cards }) {
@@ -21,16 +21,18 @@ export default function Graph({ cards }) {
   return(
     <Flex p={3} w="100%" h="310.5px" borderWidth={1} boxShadow="sm" align="center" direction="column">
       <Text p={3} fontWeight="bold" color="teal.500">Earnings Overview</Text>
-      <ComposedChart width={500} height={250} data={data}>
-        <XAxis dataKey="dateAdded" />
-        <YAxis type="number" domain={[0, "dataMax+"+runningSum.toString()]}/>
-        <Tooltip />
-        <Legend />
-        <CartesianGrid stroke="#f5f5f5" />
-        <Area type="monotone" dataKey="amountAdded" fill="#8884d8" stroke="#8884d8" />
-        <Bar dataKey="cardValue" barSize={20} fill="#413ea0" />
-        <Line type="monotone" dataKey="averageValue" stroke="#ff7300" />
-      </ComposedChart>
+      <ResponsiveContainer width="100%" height="100%">
+        <ComposedChart data={data}>
+          <XAxis dataKey="dateAdded" />
+          <YAxis type="number" domain={[0, "dataMax+"+runningSum.toString()]} />
+          <Tooltip />
+          <Legend align="right" verticalAlign="bottom"/>
+          <CartesianGrid stroke="#f5f5f5" />
+          <Area name="Amount Added" type="monotone" dataKey="amountAdded" fill="#8884d8" stroke="#8884d8" />
+          <Bar name="Card Value" dataKey="cardValue" barSize={20} fill="#413ea0" />
+          <Line name="Average Value"type="monotone" dataKey="averageValue" stroke="#ff7300" />
+        </ComposedChart>
+      </ResponsiveContainer>
     </Flex>
   )
 

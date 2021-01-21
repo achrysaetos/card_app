@@ -22,7 +22,6 @@ export default function Data({ cards }) {
         </Text>
       </Flex>
     </VStack>
-    
   )
 
 }
