@@ -49,7 +49,7 @@ export default function AddCard() {
           <ModalBody>
             { user ? 
               <>
-                <Flex alignItems="flex-end" justify="space-between">
+                <Flex w="100%" justifyContent="center">
                   <form onSubmit={onSubmit} noValidate>
                     <FormControl>
                       <Flex alignItems="center">

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 
 import { AuthContext } from "../context/auth"
 import Dashboard from "../components/Dashboard"
-import Landing from "../components/Landing"
+// import Landing from "../components/Landing"
 
 export default function Home() {
   const { user } = useContext(AuthContext)
@@ -10,7 +10,7 @@ export default function Home() {
   if (user) {
     return <Dashboard />
   } else {
-    return <Landing />
+    return "" // return <Landing />
   }
   
 }
