@@ -4,9 +4,9 @@ import { Flex, Text, Button, FormControl, useDisclosure, IconButton, Input } fro
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 
-import { AuthContext } from "../context/auth"
-import { useForm } from "../util/hooks"
-import { CREATE_CARD_MUTATION } from "../graphql/CREATE_CARD_MUTATION"
+import { AuthContext } from "../../context/auth"
+import { useForm } from "../../util/hooks"
+import { CREATE_CARD_MUTATION } from "../../graphql/CREATE_CARD_MUTATION"
 
 export default function AddCard() {
     const { user } = useContext(AuthContext)
