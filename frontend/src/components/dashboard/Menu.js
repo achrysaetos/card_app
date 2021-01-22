@@ -12,9 +12,9 @@ export default function Menu() {
             <Box flex="1" textAlign="left" fontWeight="bold"> Dashboard </Box>
             <AccordionIcon />
           </AccordionButton>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Home </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Overview </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Add a Card </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
@@ -22,9 +22,9 @@ export default function Menu() {
             <Box flex="1" textAlign="left" fontWeight="bold"> Account </Box>
             <AccordionIcon />
           </AccordionButton>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> My Profile </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Progress Report </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Latest Activity </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
@@ -32,9 +32,9 @@ export default function Menu() {
             <Box flex="1" textAlign="left" fontWeight="bold"> Settings </Box>
             <AccordionIcon />
           </AccordionButton>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
-          <AccordionPanel pb={4} ml={2}> Lorem ipsum </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Settings </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Notifications </AccordionPanel>
+          <AccordionPanel pb={4} ml={2}> Support </AccordionPanel>
         </AccordionItem>
       </Accordion>
     </Flex>

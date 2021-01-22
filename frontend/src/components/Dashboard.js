@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useQuery } from "@apollo/react-hooks"
-import { HStack, VStack, Flex, Text, Box } from "@chakra-ui/react"
+import { HStack, VStack, Flex, Text, Box, Spinner } from "@chakra-ui/react"
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption } from "@chakra-ui/react"
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
 import { ComposedChart, XAxis, YAxis, Legend, CartesianGrid, Area, Bar, Line } from "recharts"
@@ -15,8 +15,9 @@ export default function Home() {
   const { user } = useContext(AuthContext)
   const { loading, data } = useQuery(FETCH_USER_QUERY, { variables: { userId: user.id }})
 
-  if (loading) return "loading" // always check loading when working with queries
-  else {
+  if (loading){ // always check loading when working with queries
+    return <Spinner color="teal.500" size="xl" ml="50%" mr="50%" mt={12}/>
+  } else {
     const amountAdded = data.getUser.cards.reduce((a, {balanceRemaining}) => a + parseFloat(balanceRemaining), 0).toFixed(2)
     const interestEarned = (amountAdded * .08).toFixed(2)
     const yourBalance = (parseFloat(amountAdded) + parseFloat(interestEarned)).toFixed(2)

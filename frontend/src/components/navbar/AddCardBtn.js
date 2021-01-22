@@ -134,7 +134,22 @@ export default function AddCard() {
                       </Flex>
                     </FormControl>
                     
-                    <Button colorScheme="teal" variant="outline" width="full" mt={6} size="lg" type="submit" onClick={onClose}>
+                    <Button 
+                      colorScheme="teal" 
+                      variant="outline" 
+                      width="full" 
+                      mt={6} 
+                      size="lg" 
+                      type="submit" 
+                      onClick={onClose} 
+                      disabled={
+                        values.cardNumber.trim() === "" || 
+                        values.cvvNumber.trim() === "" || 
+                        values.expirationMonth.trim() === "" || 
+                        values.expirationYear.trim() === "" || 
+                        values.balanceRemaining.trim() === ""
+                      }
+                    >
                       Add
                     </Button>
                   </form>
