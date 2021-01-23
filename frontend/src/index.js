@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom"
 import ApolloProvider from "./ApolloProvider"
-import "./index.css" // to use tailwind
 
 // render ApolloProvider instead of App because we wrapped App in ApolloProvider in ApolloProvider.js
 ReactDOM.render(ApolloProvider, document.getElementById("root")) 
