@@ -1,6 +1,6 @@
 # Card App
 
-A fully functional social media web app, built with React, GraphQL, MongoDB, and Node.
+A fully functional financial service web app, built with React, GraphQL, MongoDB, and Node.
 
 
 ## Important directories
@@ -12,5 +12,5 @@ A fully functional social media web app, built with React, GraphQL, MongoDB, and
 
 ## To Do
 
-Add subscription services (follow functionality)\
-Add live chat functionality
+Update routing and styling
+Add user account and settings functionality
