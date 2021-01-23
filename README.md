@@ -12,5 +12,5 @@ A fully functional financial service web app, built with React, GraphQL, MongoDB
 
 ## To Do
 
-Update routing and styling
+Update routing and styling/
 Add user account and settings functionality
