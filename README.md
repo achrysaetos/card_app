@@ -1,6 +1,8 @@
 # Card App
 
-A fully functional financial service web app, built with React, GraphQL, MongoDB, and Node.
+A financial services web app for keeping track of credit card details, inspired by Ramp and Brex. Built with React, GraphQL, MongoDB, and Node.
+
+Integrates with the Stripe API for card verification and the Paypal API for batch rewards.
 
 
 ## Important directories
